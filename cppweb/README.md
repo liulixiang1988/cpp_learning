@@ -45,13 +45,14 @@ make
 To run the app, we need to add the port mapping: 
 
 ```bash
-docker run -it -v <host>:<container> -p <host>:<container> <image> bash
+docker run -it -v <host>:<container> -p <host>:<container> -e PORT=18081 <image> <app>
 ```
+
+- `-p` is the port mapping
+- `-e` is the environment variable
 
 Run the app
 
 ```bash
-docker run -it -v $(pwd)/hello_crow:/home/cppbox/hello_crow -p 8080:8080 cppbox bash
-cd build
-./hello_crow
+docker run -it -v $(pwd)/hello_crow:/home/cppbox/hello_crow -p 8080:8080 -e PORT=8080 cppbox /home/cppbox/hello_crow/build/hello_crow
 ```
